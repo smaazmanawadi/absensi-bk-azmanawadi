@@ -205,37 +205,15 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, onValue, set, update, remove, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // ==========================================
-        // GANTI DENGAN KREDENSIAL FIREBASE MILIK ANDA
-        // ==========================================
+        // Konfigurasi Firebase yang sudah dibersihkan dan benar
         const firebaseConfig = {
-            apiKey: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCboOe25oQ8fjcxowqSAzsgUFB4GGM9Mz8",
-  authDomain: "absensi-bk-d336d.firebaseapp.com",
-  projectId: "absensi-bk-d336d",
-  storageBucket: "absensi-bk-d336d.firebasestorage.app",
-  messagingSenderId: "1031583359294",
-  appId: "1:1031583359294:web:9536d6c3be30b6ad2a8c6f",
-  measurementId: "G-5MRQ893Z1T"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);",
-            authDomain: "MASUKKAN_AUTH_DOMAIN_ANDA",
-            databaseURL: "MASUKKAN_DATABASE_URL_ANDA",
-            projectId: "MASUKKAN_PROJECT_ID_ANDA",
-            storageBucket: "MASUKKAN_STORAGE_BUCKET_ANDA",
-            messagingSenderId: "MASUKKAN_MESSAGING_SENDER_ID_ANDA",
-            appId: "MASUKKAN_APP_ID_ANDA"
+            apiKey: "AIzaSyCboOe25oQ8fjcxowqSAzsgUFB4GGM9Mz8",
+            authDomain: "absensi-bk-d336d.firebaseapp.com",
+            databaseURL: "https://absensi-bk-d336d-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "absensi-bk-d336d",
+            storageBucket: "absensi-bk-d336d.firebasestorage.app",
+            messagingSenderId: "1031583359294",
+            appId: "1:1031583359294:web:9536d6c3be30b6ad2a8c6f"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -330,7 +308,6 @@ const analytics = getAnalytics(app);",
                 if (snapshot.exists()) {
                     masterSiswa = Object.values(snapshot.val());
                 } else {
-                    // Jika kosong, masukkan data default ke Firebase
                     const initialObj = {};
                     defaultDataSiswa.forEach(s => initialObj[s.id] = s);
                     set(ref(db, 'masterSiswa'), initialObj);
